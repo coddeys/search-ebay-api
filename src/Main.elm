@@ -15,76 +15,10 @@ import UrlParser as Url exposing (..)
 import Validate exposing (Validator, ifBlank)
 
 
--- LAYOUT
-
-
-type Styles
-    = Clean
-    | HeaderStyle
-    | SearchStyle
-    | SearchStyleNotValid
-    | CheckSellerStyle
-    | FiltersStyle
-    | MainContentStyle
-    | BodyStyle
-    | ListElementsStyles
-    | CheckCurrencyStyle
-    | PriceFieldStyle
-    | SeachButtonStyle
-    | ErrorStyle
-
-
-stylesheet =
-    Style.styleSheet
-        [ style Clean []
-        , style HeaderStyle
-            [ Color.background lightBlue
-            , Color.border blue
-            , Border.bottom 2
-            ]
-        , style SearchStyle
-            [ Border.all 1
-            , Color.border lightGrey
-            ]
-        , style SearchStyleNotValid
-            [ Border.all 1
-            , Color.border red
-            ]
-        , style FiltersStyle
-            [ Color.background grey
-            , Color.border green
-            ]
-        , style BodyStyle
-            [ Color.background lightGrey ]
-        , style ListElementsStyles
-            [ Color.background white
-            , Color.border green
-            , Border.left 2
-            , Border.top 2
-            ]
-        , style PriceFieldStyle
-            [ Border.all 1
-            , Color.border black
-            ]
-        , style SeachButtonStyle
-            [ Color.background blue
-            , Color.text white
-            ]
-        , style ErrorStyle
-            [ Color.text red ]
-        , style MainContentStyle
-            []
-        , style CheckSellerStyle
-            []
-        , style CheckCurrencyStyle
-            []
-        ]
-
-
-
 -- MAIN
 
 
+main : Program Never Model Msg
 main =
     Navigation.program UrlChange
         { init = init
@@ -104,8 +38,6 @@ type alias Model =
     , currency : Currency
     , minPrice : String
     , maxPrice : String
-
-    -- , history : List Navigation.Location
     , status : Status
     }
 
@@ -137,6 +69,24 @@ init location =
         ! []
 
 
+type SellerAccountType
+    = Individual
+    | Business
+
+
+type Currency
+    = USD
+    | EUR
+    | GBP
+    | CAD
+
+
+type Status
+    = NotAsked
+    | Asked
+
+
+keywordsFromLoacation : Navigation.Location -> String
 keywordsFromLoacation location =
     location
         |> Url.parseHash (top <?> Url.stringParam "q")
@@ -144,6 +94,7 @@ keywordsFromLoacation location =
         |> Maybe.withDefault ""
 
 
+filtersFromLocation : Navigation.Location -> List (List String)
 filtersFromLocation location =
     location
         |> Url.parseHash (top <?> Url.stringParam "filter")
@@ -165,16 +116,23 @@ sellerAccountTypeFromFilters filters =
 
 priceMinFromFilters : List (List String) -> String
 priceMinFromFilters filters =
-    Maybe.withDefault "" (List.head (priceRangeFromFilters_ filters))
+    filters
+        |> priceRangeFromFilters
+        |> List.head
+        |> Maybe.withDefault ""
 
 
 priceMaxFromFilters : List (List String) -> String
 priceMaxFromFilters filters =
-    Maybe.withDefault "" (List.head (List.drop 1 (priceRangeFromFilters_ filters)))
+    filters
+        |> priceRangeFromFilters
+        |> List.drop 1
+        |> List.head
+        |> Maybe.withDefault ""
 
 
-priceRangeFromFilters_ : List (List String) -> List String
-priceRangeFromFilters_ filters =
+priceRangeFromFilters : List (List String) -> List String
+priceRangeFromFilters filters =
     filters
         |> List.filter (\f -> List.head f == Just "price")
         |> List.head
@@ -191,23 +149,6 @@ currencyFromFilters filters =
         |> Maybe.map (\f -> Maybe.withDefault "" (List.head (List.drop 1 f)))
         |> Maybe.withDefault ""
         |> currencyFromString
-
-
-type SellerAccountType
-    = Individual
-    | Business
-
-
-type Currency
-    = USD
-    | EUR
-    | GBP
-    | CAD
-
-
-type Status
-    = NotAsked
-    | Asked
 
 
 sellerAccountTypesToString : SellerAccountType -> String
@@ -294,12 +235,6 @@ update msg model =
 
         UrlChange location ->
             model ! []
-
-
-
--- ( { model | history = location :: model.history }
--- , Cmd.none
--- )
 
 
 generateUrl :
@@ -582,3 +517,70 @@ searchFieldView style message keywords =
 subscriptions : Model -> Sub Msg
 subscriptions model =
     Sub.none
+
+
+
+-- LAYOUT
+
+
+type Styles
+    = Clean
+    | HeaderStyle
+    | SearchStyle
+    | SearchStyleNotValid
+    | CheckSellerStyle
+    | FiltersStyle
+    | MainContentStyle
+    | BodyStyle
+    | ListElementsStyles
+    | CheckCurrencyStyle
+    | PriceFieldStyle
+    | SeachButtonStyle
+    | ErrorStyle
+
+
+stylesheet =
+    Style.styleSheet
+        [ style Clean []
+        , style HeaderStyle
+            [ Color.background lightBlue
+            , Color.border blue
+            , Border.bottom 2
+            ]
+        , style SearchStyle
+            [ Border.all 1
+            , Color.border lightGrey
+            ]
+        , style SearchStyleNotValid
+            [ Border.all 1
+            , Color.border red
+            ]
+        , style FiltersStyle
+            [ Color.background grey
+            , Color.border green
+            ]
+        , style BodyStyle
+            [ Color.background lightGrey ]
+        , style ListElementsStyles
+            [ Color.background white
+            , Color.border green
+            , Border.left 2
+            , Border.top 2
+            ]
+        , style PriceFieldStyle
+            [ Border.all 1
+            , Color.border black
+            ]
+        , style SeachButtonStyle
+            [ Color.background blue
+            , Color.text white
+            ]
+        , style ErrorStyle
+            [ Color.text red ]
+        , style MainContentStyle
+            []
+        , style CheckSellerStyle
+            []
+        , style CheckCurrencyStyle
+            []
+        ]

@@ -28354,7 +28354,7 @@ var _coddeys$elm_starter_kit$Main$generateUrl = function (model) {
 				A4(_coddeys$elm_starter_kit$Main$toFiltersUrl, model.sellerAccountType, model.minPrice, model.maxPrice, model.currency)));
 	}
 };
-var _coddeys$elm_starter_kit$Main$priceRangeFromFilters_ = function (filters) {
+var _coddeys$elm_starter_kit$Main$priceRangeFromFilters = function (filters) {
 	return A2(
 		_elm_lang$core$String$split,
 		'..',
@@ -28391,14 +28391,14 @@ var _coddeys$elm_starter_kit$Main$priceMaxFromFilters = function (filters) {
 			A2(
 				_elm_lang$core$List$drop,
 				1,
-				_coddeys$elm_starter_kit$Main$priceRangeFromFilters_(filters))));
+				_coddeys$elm_starter_kit$Main$priceRangeFromFilters(filters))));
 };
 var _coddeys$elm_starter_kit$Main$priceMinFromFilters = function (filters) {
 	return A2(
 		_elm_lang$core$Maybe$withDefault,
 		'',
 		_elm_lang$core$List$head(
-			_coddeys$elm_starter_kit$Main$priceRangeFromFilters_(filters)));
+			_coddeys$elm_starter_kit$Main$priceRangeFromFilters(filters)));
 };
 var _coddeys$elm_starter_kit$Main$filtersFromLocation = function (location) {
 	return A2(
@@ -28439,188 +28439,6 @@ var _coddeys$elm_starter_kit$Main$keywordsFromLoacation = function (location) {
 var _coddeys$elm_starter_kit$Main$Model = F6(
 	function (a, b, c, d, e, f) {
 		return {keywords: a, sellerAccountType: b, currency: c, minPrice: d, maxPrice: e, status: f};
-	});
-var _coddeys$elm_starter_kit$Main$ErrorStyle = {ctor: 'ErrorStyle'};
-var _coddeys$elm_starter_kit$Main$SeachButtonStyle = {ctor: 'SeachButtonStyle'};
-var _coddeys$elm_starter_kit$Main$PriceFieldStyle = {ctor: 'PriceFieldStyle'};
-var _coddeys$elm_starter_kit$Main$CheckCurrencyStyle = {ctor: 'CheckCurrencyStyle'};
-var _coddeys$elm_starter_kit$Main$ListElementsStyles = {ctor: 'ListElementsStyles'};
-var _coddeys$elm_starter_kit$Main$BodyStyle = {ctor: 'BodyStyle'};
-var _coddeys$elm_starter_kit$Main$MainContentStyle = {ctor: 'MainContentStyle'};
-var _coddeys$elm_starter_kit$Main$FiltersStyle = {ctor: 'FiltersStyle'};
-var _coddeys$elm_starter_kit$Main$CheckSellerStyle = {ctor: 'CheckSellerStyle'};
-var _coddeys$elm_starter_kit$Main$SearchStyleNotValid = {ctor: 'SearchStyleNotValid'};
-var _coddeys$elm_starter_kit$Main$SearchStyle = {ctor: 'SearchStyle'};
-var _coddeys$elm_starter_kit$Main$HeaderStyle = {ctor: 'HeaderStyle'};
-var _coddeys$elm_starter_kit$Main$Clean = {ctor: 'Clean'};
-var _coddeys$elm_starter_kit$Main$stylesheet = _mdgriffith$style_elements$Style$styleSheet(
-	{
-		ctor: '::',
-		_0: A2(
-			_mdgriffith$style_elements$Style$style,
-			_coddeys$elm_starter_kit$Main$Clean,
-			{ctor: '[]'}),
-		_1: {
-			ctor: '::',
-			_0: A2(
-				_mdgriffith$style_elements$Style$style,
-				_coddeys$elm_starter_kit$Main$HeaderStyle,
-				{
-					ctor: '::',
-					_0: _mdgriffith$style_elements$Style_Color$background(_elm_lang$core$Color$lightBlue),
-					_1: {
-						ctor: '::',
-						_0: _mdgriffith$style_elements$Style_Color$border(_elm_lang$core$Color$blue),
-						_1: {
-							ctor: '::',
-							_0: _mdgriffith$style_elements$Style_Border$bottom(2),
-							_1: {ctor: '[]'}
-						}
-					}
-				}),
-			_1: {
-				ctor: '::',
-				_0: A2(
-					_mdgriffith$style_elements$Style$style,
-					_coddeys$elm_starter_kit$Main$SearchStyle,
-					{
-						ctor: '::',
-						_0: _mdgriffith$style_elements$Style_Border$all(1),
-						_1: {
-							ctor: '::',
-							_0: _mdgriffith$style_elements$Style_Color$border(_elm_lang$core$Color$lightGrey),
-							_1: {ctor: '[]'}
-						}
-					}),
-				_1: {
-					ctor: '::',
-					_0: A2(
-						_mdgriffith$style_elements$Style$style,
-						_coddeys$elm_starter_kit$Main$SearchStyleNotValid,
-						{
-							ctor: '::',
-							_0: _mdgriffith$style_elements$Style_Border$all(1),
-							_1: {
-								ctor: '::',
-								_0: _mdgriffith$style_elements$Style_Color$border(_elm_lang$core$Color$red),
-								_1: {ctor: '[]'}
-							}
-						}),
-					_1: {
-						ctor: '::',
-						_0: A2(
-							_mdgriffith$style_elements$Style$style,
-							_coddeys$elm_starter_kit$Main$FiltersStyle,
-							{
-								ctor: '::',
-								_0: _mdgriffith$style_elements$Style_Color$background(_elm_lang$core$Color$grey),
-								_1: {
-									ctor: '::',
-									_0: _mdgriffith$style_elements$Style_Color$border(_elm_lang$core$Color$green),
-									_1: {ctor: '[]'}
-								}
-							}),
-						_1: {
-							ctor: '::',
-							_0: A2(
-								_mdgriffith$style_elements$Style$style,
-								_coddeys$elm_starter_kit$Main$BodyStyle,
-								{
-									ctor: '::',
-									_0: _mdgriffith$style_elements$Style_Color$background(_elm_lang$core$Color$lightGrey),
-									_1: {ctor: '[]'}
-								}),
-							_1: {
-								ctor: '::',
-								_0: A2(
-									_mdgriffith$style_elements$Style$style,
-									_coddeys$elm_starter_kit$Main$ListElementsStyles,
-									{
-										ctor: '::',
-										_0: _mdgriffith$style_elements$Style_Color$background(_elm_lang$core$Color$white),
-										_1: {
-											ctor: '::',
-											_0: _mdgriffith$style_elements$Style_Color$border(_elm_lang$core$Color$green),
-											_1: {
-												ctor: '::',
-												_0: _mdgriffith$style_elements$Style_Border$left(2),
-												_1: {
-													ctor: '::',
-													_0: _mdgriffith$style_elements$Style_Border$top(2),
-													_1: {ctor: '[]'}
-												}
-											}
-										}
-									}),
-								_1: {
-									ctor: '::',
-									_0: A2(
-										_mdgriffith$style_elements$Style$style,
-										_coddeys$elm_starter_kit$Main$PriceFieldStyle,
-										{
-											ctor: '::',
-											_0: _mdgriffith$style_elements$Style_Border$all(1),
-											_1: {
-												ctor: '::',
-												_0: _mdgriffith$style_elements$Style_Color$border(_elm_lang$core$Color$black),
-												_1: {ctor: '[]'}
-											}
-										}),
-									_1: {
-										ctor: '::',
-										_0: A2(
-											_mdgriffith$style_elements$Style$style,
-											_coddeys$elm_starter_kit$Main$SeachButtonStyle,
-											{
-												ctor: '::',
-												_0: _mdgriffith$style_elements$Style_Color$background(_elm_lang$core$Color$blue),
-												_1: {
-													ctor: '::',
-													_0: _mdgriffith$style_elements$Style_Color$text(_elm_lang$core$Color$white),
-													_1: {ctor: '[]'}
-												}
-											}),
-										_1: {
-											ctor: '::',
-											_0: A2(
-												_mdgriffith$style_elements$Style$style,
-												_coddeys$elm_starter_kit$Main$ErrorStyle,
-												{
-													ctor: '::',
-													_0: _mdgriffith$style_elements$Style_Color$text(_elm_lang$core$Color$red),
-													_1: {ctor: '[]'}
-												}),
-											_1: {
-												ctor: '::',
-												_0: A2(
-													_mdgriffith$style_elements$Style$style,
-													_coddeys$elm_starter_kit$Main$MainContentStyle,
-													{ctor: '[]'}),
-												_1: {
-													ctor: '::',
-													_0: A2(
-														_mdgriffith$style_elements$Style$style,
-														_coddeys$elm_starter_kit$Main$CheckSellerStyle,
-														{ctor: '[]'}),
-													_1: {
-														ctor: '::',
-														_0: A2(
-															_mdgriffith$style_elements$Style$style,
-															_coddeys$elm_starter_kit$Main$CheckCurrencyStyle,
-															{ctor: '[]'}),
-														_1: {ctor: '[]'}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
 	});
 var _coddeys$elm_starter_kit$Main$Business = {ctor: 'Business'};
 var _coddeys$elm_starter_kit$Main$Individual = {ctor: 'Individual'};
@@ -28796,6 +28614,11 @@ var _coddeys$elm_starter_kit$Main$CheckSellerAccountType = function (a) {
 	return {ctor: 'CheckSellerAccountType', _0: a};
 };
 var _coddeys$elm_starter_kit$Main$Search = {ctor: 'Search'};
+var _coddeys$elm_starter_kit$Main$UpdKeywords = function (a) {
+	return {ctor: 'UpdKeywords', _0: a};
+};
+var _coddeys$elm_starter_kit$Main$ErrorStyle = {ctor: 'ErrorStyle'};
+var _coddeys$elm_starter_kit$Main$SeachButtonStyle = {ctor: 'SeachButtonStyle'};
 var _coddeys$elm_starter_kit$Main$searchButtonView = A3(
 	_mdgriffith$style_elements$Element$button,
 	_coddeys$elm_starter_kit$Main$SeachButtonStyle,
@@ -28809,9 +28632,17 @@ var _coddeys$elm_starter_kit$Main$searchButtonView = A3(
 		}
 	},
 	_mdgriffith$style_elements$Element$text('Search'));
-var _coddeys$elm_starter_kit$Main$UpdKeywords = function (a) {
-	return {ctor: 'UpdKeywords', _0: a};
-};
+var _coddeys$elm_starter_kit$Main$PriceFieldStyle = {ctor: 'PriceFieldStyle'};
+var _coddeys$elm_starter_kit$Main$CheckCurrencyStyle = {ctor: 'CheckCurrencyStyle'};
+var _coddeys$elm_starter_kit$Main$ListElementsStyles = {ctor: 'ListElementsStyles'};
+var _coddeys$elm_starter_kit$Main$BodyStyle = {ctor: 'BodyStyle'};
+var _coddeys$elm_starter_kit$Main$MainContentStyle = {ctor: 'MainContentStyle'};
+var _coddeys$elm_starter_kit$Main$FiltersStyle = {ctor: 'FiltersStyle'};
+var _coddeys$elm_starter_kit$Main$CheckSellerStyle = {ctor: 'CheckSellerStyle'};
+var _coddeys$elm_starter_kit$Main$SearchStyleNotValid = {ctor: 'SearchStyleNotValid'};
+var _coddeys$elm_starter_kit$Main$SearchStyle = {ctor: 'SearchStyle'};
+var _coddeys$elm_starter_kit$Main$HeaderStyle = {ctor: 'HeaderStyle'};
+var _coddeys$elm_starter_kit$Main$Clean = {ctor: 'Clean'};
 var _coddeys$elm_starter_kit$Main$searchView = function (model) {
 	var _p17 = _coddeys$elm_starter_kit$Main$validate(model);
 	if (_p17.ctor === 'Just') {
@@ -28900,6 +28731,175 @@ var _coddeys$elm_starter_kit$Main$searchView = function (model) {
 		};
 	}
 };
+var _coddeys$elm_starter_kit$Main$stylesheet = _mdgriffith$style_elements$Style$styleSheet(
+	{
+		ctor: '::',
+		_0: A2(
+			_mdgriffith$style_elements$Style$style,
+			_coddeys$elm_starter_kit$Main$Clean,
+			{ctor: '[]'}),
+		_1: {
+			ctor: '::',
+			_0: A2(
+				_mdgriffith$style_elements$Style$style,
+				_coddeys$elm_starter_kit$Main$HeaderStyle,
+				{
+					ctor: '::',
+					_0: _mdgriffith$style_elements$Style_Color$background(_elm_lang$core$Color$lightBlue),
+					_1: {
+						ctor: '::',
+						_0: _mdgriffith$style_elements$Style_Color$border(_elm_lang$core$Color$blue),
+						_1: {
+							ctor: '::',
+							_0: _mdgriffith$style_elements$Style_Border$bottom(2),
+							_1: {ctor: '[]'}
+						}
+					}
+				}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_mdgriffith$style_elements$Style$style,
+					_coddeys$elm_starter_kit$Main$SearchStyle,
+					{
+						ctor: '::',
+						_0: _mdgriffith$style_elements$Style_Border$all(1),
+						_1: {
+							ctor: '::',
+							_0: _mdgriffith$style_elements$Style_Color$border(_elm_lang$core$Color$lightGrey),
+							_1: {ctor: '[]'}
+						}
+					}),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_mdgriffith$style_elements$Style$style,
+						_coddeys$elm_starter_kit$Main$SearchStyleNotValid,
+						{
+							ctor: '::',
+							_0: _mdgriffith$style_elements$Style_Border$all(1),
+							_1: {
+								ctor: '::',
+								_0: _mdgriffith$style_elements$Style_Color$border(_elm_lang$core$Color$red),
+								_1: {ctor: '[]'}
+							}
+						}),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_mdgriffith$style_elements$Style$style,
+							_coddeys$elm_starter_kit$Main$FiltersStyle,
+							{
+								ctor: '::',
+								_0: _mdgriffith$style_elements$Style_Color$background(_elm_lang$core$Color$grey),
+								_1: {
+									ctor: '::',
+									_0: _mdgriffith$style_elements$Style_Color$border(_elm_lang$core$Color$green),
+									_1: {ctor: '[]'}
+								}
+							}),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_mdgriffith$style_elements$Style$style,
+								_coddeys$elm_starter_kit$Main$BodyStyle,
+								{
+									ctor: '::',
+									_0: _mdgriffith$style_elements$Style_Color$background(_elm_lang$core$Color$lightGrey),
+									_1: {ctor: '[]'}
+								}),
+							_1: {
+								ctor: '::',
+								_0: A2(
+									_mdgriffith$style_elements$Style$style,
+									_coddeys$elm_starter_kit$Main$ListElementsStyles,
+									{
+										ctor: '::',
+										_0: _mdgriffith$style_elements$Style_Color$background(_elm_lang$core$Color$white),
+										_1: {
+											ctor: '::',
+											_0: _mdgriffith$style_elements$Style_Color$border(_elm_lang$core$Color$green),
+											_1: {
+												ctor: '::',
+												_0: _mdgriffith$style_elements$Style_Border$left(2),
+												_1: {
+													ctor: '::',
+													_0: _mdgriffith$style_elements$Style_Border$top(2),
+													_1: {ctor: '[]'}
+												}
+											}
+										}
+									}),
+								_1: {
+									ctor: '::',
+									_0: A2(
+										_mdgriffith$style_elements$Style$style,
+										_coddeys$elm_starter_kit$Main$PriceFieldStyle,
+										{
+											ctor: '::',
+											_0: _mdgriffith$style_elements$Style_Border$all(1),
+											_1: {
+												ctor: '::',
+												_0: _mdgriffith$style_elements$Style_Color$border(_elm_lang$core$Color$black),
+												_1: {ctor: '[]'}
+											}
+										}),
+									_1: {
+										ctor: '::',
+										_0: A2(
+											_mdgriffith$style_elements$Style$style,
+											_coddeys$elm_starter_kit$Main$SeachButtonStyle,
+											{
+												ctor: '::',
+												_0: _mdgriffith$style_elements$Style_Color$background(_elm_lang$core$Color$blue),
+												_1: {
+													ctor: '::',
+													_0: _mdgriffith$style_elements$Style_Color$text(_elm_lang$core$Color$white),
+													_1: {ctor: '[]'}
+												}
+											}),
+										_1: {
+											ctor: '::',
+											_0: A2(
+												_mdgriffith$style_elements$Style$style,
+												_coddeys$elm_starter_kit$Main$ErrorStyle,
+												{
+													ctor: '::',
+													_0: _mdgriffith$style_elements$Style_Color$text(_elm_lang$core$Color$red),
+													_1: {ctor: '[]'}
+												}),
+											_1: {
+												ctor: '::',
+												_0: A2(
+													_mdgriffith$style_elements$Style$style,
+													_coddeys$elm_starter_kit$Main$MainContentStyle,
+													{ctor: '[]'}),
+												_1: {
+													ctor: '::',
+													_0: A2(
+														_mdgriffith$style_elements$Style$style,
+														_coddeys$elm_starter_kit$Main$CheckSellerStyle,
+														{ctor: '[]'}),
+													_1: {
+														ctor: '::',
+														_0: A2(
+															_mdgriffith$style_elements$Style$style,
+															_coddeys$elm_starter_kit$Main$CheckCurrencyStyle,
+															{ctor: '[]'}),
+														_1: {ctor: '[]'}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	});
 var _coddeys$elm_starter_kit$Main$view = function (model) {
 	return A2(
 		_mdgriffith$style_elements$Element$viewport,
